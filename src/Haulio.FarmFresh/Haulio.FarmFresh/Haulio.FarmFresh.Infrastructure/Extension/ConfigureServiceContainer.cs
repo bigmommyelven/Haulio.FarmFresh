@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Haulio.FarmFresh.Domain.Settings;
 using Haulio.FarmFresh.Infrastructure.Mapping;
 using Haulio.FarmFresh.Persistence;
 using Haulio.FarmFresh.Service.Contract;
@@ -8,13 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
 
 namespace Haulio.FarmFresh.Infrastructure.Extension
 {

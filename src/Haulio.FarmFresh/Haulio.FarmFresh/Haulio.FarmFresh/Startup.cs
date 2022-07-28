@@ -1,19 +1,14 @@
 using Haulio.FarmFresh.Domain.Settings;
 using Haulio.FarmFresh.Infrastructure.Extension;
-using Haulio.FarmFresh.Persistence;
 using Haulio.FarmFresh.Service;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.FeatureManagement;
 using Serilog;
-using System;
 using System.IO;
 
 namespace Haulio.FarmFresh
