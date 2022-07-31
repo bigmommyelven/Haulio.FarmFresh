@@ -7,7 +7,7 @@ namespace Haulio.FarmFresh.Persistence.Seeds
 {
     public static class ContextSeed
     {
-        public static void Seed(this ModelBuilder modelBuilder)
+        public static void SeedIdentity(this ModelBuilder modelBuilder)
         {
             CreateRoles(modelBuilder);
 

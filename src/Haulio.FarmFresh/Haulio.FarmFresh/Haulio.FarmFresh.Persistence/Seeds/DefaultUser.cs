@@ -15,8 +15,8 @@ namespace Haulio.FarmFresh.Persistence.Seeds
                     Id = Constants.SuperAdminUser,
                     UserName = "superadmin",
                     Email = "superadmin@gmail.com",
-                    FirstName = "Amit",
-                    LastName = "Naik",
+                    FirstName = "Superadmin",
+                    LastName = "User",
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true,
                     // Password@123

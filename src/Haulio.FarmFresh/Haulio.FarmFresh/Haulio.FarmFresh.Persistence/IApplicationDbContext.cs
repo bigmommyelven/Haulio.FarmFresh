@@ -10,8 +10,8 @@ namespace Haulio.FarmFresh.Persistence
         DbSet<Customer> Customers { get; set; }
         DbSet<Order> Orders { get; set; }
         DbSet<Product> Products { get; set; }
-        DbSet<Supplier> Suppliers { get; set; }
-
+        DbSet<ProductMenu> ProductMenus { get; set; }
+        DbSet<ProductImage> ProductImages { get; set; }
         Task<int> SaveChangesAsync();
     }
 }

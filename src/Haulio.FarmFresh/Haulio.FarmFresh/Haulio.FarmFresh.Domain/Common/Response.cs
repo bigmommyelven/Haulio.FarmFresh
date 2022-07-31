@@ -1,13 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace Haulio.FarmFresh.Domain.Common
+﻿namespace Haulio.FarmFresh.Domain.Common
 {
-    public class Response<T>
+    public class Response
     {
-        public Response()
-        {
-        }
-        public Response(T data, string message = null)
+        public Response(object data, string message = null)
         {
             Succeeded = true;
             Message = message;
@@ -20,7 +15,6 @@ namespace Haulio.FarmFresh.Domain.Common
         }
         public bool Succeeded { get; set; }
         public string Message { get; set; }
-        public List<string> Errors { get; set; }
-        public T Data { get; set; }
+        public object Data { get; set; }
     }
 }

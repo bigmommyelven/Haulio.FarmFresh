@@ -4,7 +4,12 @@ using Haulio.FarmFresh.Domain.Settings;
 using Haulio.FarmFresh.Persistence;
 using Haulio.FarmFresh.Service.Contract;
 using Haulio.FarmFresh.Service.Implementation;
-using MediatR;
+using Haulio.FarmFresh.Service.Repositories;
+using Haulio.FarmFresh.Service.Repositories.CategoryRepository;
+using Haulio.FarmFresh.Service.Repositories.CustomerRepository;
+using Haulio.FarmFresh.Service.Repositories.OrderRepository;
+using Haulio.FarmFresh.Service.Repositories.ProductMenuRepository;
+using Haulio.FarmFresh.Service.Repositories.ProductRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -14,7 +19,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
-using System.Reflection;
 using System.Text;
 
 namespace Haulio.FarmFresh.Service
@@ -23,8 +27,14 @@ namespace Haulio.FarmFresh.Service
     {
         public static void AddServiceLayer(this IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddTransient<IEmailService, MailService>();
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IProductMenuRepository, ProductMenuRepository>();
         }
 
         public static void AddIdentityService(this IServiceCollection services, IConfiguration configuration)
@@ -74,14 +84,14 @@ namespace Haulio.FarmFresh.Service
                             context.HandleResponse();
                             context.Response.StatusCode = 401;
                             context.Response.ContentType = "application/json";
-                            var result = JsonConvert.SerializeObject(new Response<string>("You are not Authorized"));
+                            var result = JsonConvert.SerializeObject(new Response("You are not Authorized"));
                             return context.Response.WriteAsync(result);
                         },
                         OnForbidden = context =>
                         {
                             context.Response.StatusCode = 403;
                             context.Response.ContentType = "application/json";
-                            var result = JsonConvert.SerializeObject(new Response<string>("You are not authorized to access this resource"));
+                            var result = JsonConvert.SerializeObject(new Response("You are not authorized to access this resource"));
                             return context.Response.WriteAsync(result);
                         },
                     };

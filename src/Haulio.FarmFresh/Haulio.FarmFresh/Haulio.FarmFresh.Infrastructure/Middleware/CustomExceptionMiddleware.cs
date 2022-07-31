@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Haulio.FarmFresh.Domain.Common;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -24,9 +25,9 @@ namespace Haulio.FarmFresh.Infrastructure.Middleware
             {
                 await _next(context);
             }
-            catch (Exception exceptionObj)
+            catch (Exception ex)
             {
-                await HandleExceptionAsync(context, exceptionObj, _logger);
+                await HandleExceptionAsync(context, ex, _logger);
             }
         }
 
@@ -36,11 +37,13 @@ namespace Haulio.FarmFresh.Infrastructure.Middleware
 
             logger.LogError(ex.Message);
 
-            var result = JsonConvert.SerializeObject(new { StatusCode = (int)code, ErrorMessage = ex.Message });
+            var response = new Response(ex.Message);
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
-            return context.Response.WriteAsync(result);
+            return context.Response.WriteAsync(
+                JsonConvert.SerializeObject(response));
         }
+
     }
 
 }

@@ -1,0 +1,18 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "HelveticaMedium";
+  src: url("HelveticaMedium.otf");
+}
+
+@font-face {
+  font-family: "HelveticaBold";
+  src: url("HelveticaBold.otf");
+}

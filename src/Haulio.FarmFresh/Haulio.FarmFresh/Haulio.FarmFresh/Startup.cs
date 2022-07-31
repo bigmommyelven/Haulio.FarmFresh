@@ -36,6 +36,12 @@ namespace Haulio.FarmFresh
         {
             services.AddController();
 
+            services.AddRouting(opt =>
+            {
+                opt.LowercaseUrls = true;
+                opt.LowercaseQueryStrings = true;
+            });
+
             services.AddDbContext(Configuration, configRoot);
 
             services.AddIdentityService(Configuration);
@@ -65,7 +71,8 @@ namespace Haulio.FarmFresh
             }
 
             app.UseCors(options =>
-                 options.WithOrigins("http://localhost:3000")
+                 options
+                 .AllowAnyOrigin()
                  .AllowAnyHeader()
                  .AllowAnyMethod());
 

@@ -49,7 +49,7 @@ namespace Haulio.FarmFresh.Persistence
                 entity.ToTable("UserTokens");
             });
 
-            modelBuilder.Seed();
+            modelBuilder.SeedIdentity();
         }
     }
 }

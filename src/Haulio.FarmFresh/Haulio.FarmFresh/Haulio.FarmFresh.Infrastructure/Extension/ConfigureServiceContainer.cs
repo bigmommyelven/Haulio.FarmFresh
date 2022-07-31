@@ -27,7 +27,7 @@ namespace Haulio.FarmFresh.Infrastructure.Extension
         {
             var mappingConfig = new MapperConfiguration(mc =>
             {
-                mc.AddProfile(new CustomerProfile());
+                mc.AddProfile(new MapProfile());
             });
             IMapper mapper = mappingConfig.CreateMapper();
             serviceCollection.AddSingleton(mapper);
@@ -57,9 +57,9 @@ namespace Haulio.FarmFresh.Infrastructure.Extension
                         Description = "Through this API you can access customer details",
                         Contact = new OpenApiContact()
                         {
-                            Email = "amit.naik8103@gmail.com",
-                            Name = "Amit Naik",
-                            Url = new Uri("https://amitpnk.github.io/")
+                            Email = "hafizhanwafi@gmail.com",
+                            Name = "Hafizhan al waffi",
+                            Url = new Uri("https://bigmommyelven.github.com/")
                         },
                         License = new OpenApiLicense()
                         {
@@ -94,7 +94,9 @@ namespace Haulio.FarmFresh.Infrastructure.Extension
 
         public static void AddController(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddControllers().AddNewtonsoftJson();
+            serviceCollection
+                .AddControllers()
+                .AddNewtonsoftJson();
         }
 
         public static void AddVersion(this IServiceCollection serviceCollection)
