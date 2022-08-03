@@ -96,7 +96,10 @@ namespace Haulio.FarmFresh.Infrastructure.Extension
         {
             serviceCollection
                 .AddControllers()
-                .AddNewtonsoftJson();
+                .AddNewtonsoftJson(opt =>
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
         }
 
         public static void AddVersion(this IServiceCollection serviceCollection)

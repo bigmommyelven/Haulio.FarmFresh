@@ -2,9 +2,7 @@
 using Haulio.FarmFresh.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Haulio.FarmFresh.Service.Repositories.ProductMenuRepository
@@ -19,12 +17,16 @@ namespace Haulio.FarmFresh.Service.Repositories.ProductMenuRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<ProductMenu>> GetProductMenu()
+        public IQueryable<ProductMenu> GetProductMenus(int? id = null)
         {
-            return await _context.ProductMenus
+            IQueryable<ProductMenu> query = _context.ProductMenus
                 .Include(pm => pm.Products)
-                .ThenInclude(p => p.ProductImages)
-                .ToListAsync();
+                .ThenInclude(p => p.ProductImages);
+
+            if (id != null)
+                query = query.Where(pm => pm.Id == id);
+
+            return query;
         }
 
         protected virtual void Dispose(bool disposing)
@@ -42,6 +44,16 @@ namespace Haulio.FarmFresh.Service.Repositories.ProductMenuRepository
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void AddMenu(ProductMenu menu)
+        {
+            _context.ProductMenus.Add(menu);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

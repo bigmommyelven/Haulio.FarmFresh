@@ -17,5 +17,10 @@ namespace Haulio.FarmFresh.Domain.Common
                 TotalPage = (int)Math.Ceiling((double)totalRecords / pagination.Limit)
             };
         }
+
+        public static PagedResponse ToPaging(Response response, Pagination pagination, int totalRecords)
+        {
+            return new PagedResponse(response.Data, pagination, totalRecords);
+        }
     }
 }

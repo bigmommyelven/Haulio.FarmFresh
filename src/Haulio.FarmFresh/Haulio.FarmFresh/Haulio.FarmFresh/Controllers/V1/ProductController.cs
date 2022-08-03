@@ -50,7 +50,7 @@ namespace Haulio.FarmFresh.Controllers.V1
             [FromQuery] Pagination pagination = null)
         {
             var pagedResponse = await _repo.GetAll(pagination);
-            
+
             return StatusCodeWithPagination(HttpStatusCode.OK, pagedResponse);
         }
 

@@ -37,7 +37,7 @@ namespace Haulio.FarmFresh.Service.Repositories.ProductRepository
                 p.Price,
                 ImageUrls = p.ProductImages.Select(pi => pi.ImageUrl).ToArray(),
                 Tags = p.Tags.Select(t => t.Id).ToArray()
-                
+
             });
             return new PagedResponse(resultObject, pagination, totalRecords);
         }

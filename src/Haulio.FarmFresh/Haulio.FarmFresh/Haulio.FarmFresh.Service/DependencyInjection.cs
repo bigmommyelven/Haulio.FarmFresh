@@ -10,6 +10,7 @@ using Haulio.FarmFresh.Service.Repositories.CustomerRepository;
 using Haulio.FarmFresh.Service.Repositories.OrderRepository;
 using Haulio.FarmFresh.Service.Repositories.ProductMenuRepository;
 using Haulio.FarmFresh.Service.Repositories.ProductRepository;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -19,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
+using System.Reflection;
 using System.Text;
 
 namespace Haulio.FarmFresh.Service
@@ -27,8 +29,7 @@ namespace Haulio.FarmFresh.Service
     {
         public static void AddServiceLayer(this IServiceCollection services)
         {
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
-
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();

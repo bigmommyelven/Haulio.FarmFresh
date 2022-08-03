@@ -1,7 +1,7 @@
-﻿using Haulio.FarmFresh.Service.Repositories.ProductMenuRepository;
+﻿using Haulio.FarmFresh.Service.Features.ProductMenu.Commands;
+using Haulio.FarmFresh.Service.Features.ProductMenu.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,19 +9,21 @@ namespace Haulio.FarmFresh.Controllers.V1
 {
     public class ProductMenuController : BaseController
     {
-        private readonly IProductMenuRepository _repo;
+        private readonly IMediator _mediator;
 
-        public ProductMenuController(IProductMenuRepository repo)
+        public ProductMenuController(IMediator mediator)
         {
-            _repo = repo;
+            _mediator = mediator;
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetProductMenus()
         {
-            var entList = await _repo.GetProductMenu();
+            var productMenus = await _mediator.Send(new GetProductMenusQuery());
 
-            var resultObject = entList
+
+            var resultObject = productMenus
                 .Select(pm => new
                 {
                     pm.Id,
@@ -38,9 +40,28 @@ namespace Haulio.FarmFresh.Controllers.V1
                         p.Strategy,
                         ImageUrls = p.ProductImages.Select(pi => pi.ImageUrl).ToArray()
                     })
-                });
+                }).ToList();
 
             return StatusCodeWithObject(System.Net.HttpStatusCode.OK, resultObject);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddMenu(AddProductMenuCommand command)
+        {
+            var newMenu = await _mediator.Send(command);
+            return StatusCodeWithObject(System.Net.HttpStatusCode.OK, newMenu);
+        }
+
+        [HttpPost("{menuId}/product")]
+        public async Task<IActionResult> AddProductToMenu(int menuId, [FromBody]int[] productIds)
+        {
+            var command = new AddProductToExistingMenuCommand
+            {
+                Id = menuId,
+                ProductIds = productIds
+            };
+            var newMenu = await _mediator.Send(command);
+            return StatusCodeWithObject(System.Net.HttpStatusCode.OK, newMenu);
         }
     }
 }

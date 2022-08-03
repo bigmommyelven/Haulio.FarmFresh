@@ -1,7 +1,5 @@
-﻿using Haulio.FarmFresh.Domain.Common;
-using Haulio.FarmFresh.Domain.Entities;
+﻿using Haulio.FarmFresh.Domain.Entities;
 using Haulio.FarmFresh.Persistence;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,49 +15,25 @@ namespace Haulio.FarmFresh.Service.Repositories.OrderRepository
             _context = context;
         }
 
-        public async Task<Order> Add(Order order)
+        public void Add(Order order)
         {
-            var ent = await _context.Orders.AddAsync(order);
+            order.OrderDate = DateTime.UtcNow;
+            _context.Orders.Add(order);
+        }
+
+        public void Update(Order order)
+        {
+            _context.Orders.Update(order);
+        }
+
+        public IQueryable<Order> GetAll()
+        {
+            return _context.Orders;
+        }
+
+        public async Task SaveChangesAsync()
+        {
             await _context.SaveChangesAsync();
-            return ent.Entity;
-        }
-
-        public async Task<Order> Cancel(Order order)
-        {
-            var res = _context.Orders.Update(order);
-            await _context.SaveChangesAsync();
-            return res.Entity;
-        }
-
-        public async Task<PagedResponse> GetAll(Pagination pagination = null)
-        {
-            pagination ??= new Pagination();
-            IQueryable<Order> query = _context.Orders
-                .Include(o => o.Customers)
-                .OrderByDescending(o => o.OrderDate);
-
-            var totalRecords = query.Count();
-            var data = await query
-                .Skip((pagination.Page - 1) * pagination.Limit)
-                .Take(pagination.Limit)
-                .ToListAsync();
-
-            return new PagedResponse(data, pagination, totalRecords);
-        }
-
-        public async Task<Order> GetById(Guid id)
-        {
-            return await _context.Orders
-                .Include(o => o.OrderDetails)
-                .FirstOrDefaultAsync(o => o.Id == id);
-        }
-
-        public async Task<Order> GetByIdAndProductId(Guid id, int productId)
-        {
-            return await _context.Orders
-                .Include(o => o.OrderDetails.Where(od => od.ProductId == productId))
-                .ThenInclude(od => od.Product)
-                .FirstOrDefaultAsync(o => o.Id == id);
         }
 
         protected virtual void Dispose(bool disposing)
