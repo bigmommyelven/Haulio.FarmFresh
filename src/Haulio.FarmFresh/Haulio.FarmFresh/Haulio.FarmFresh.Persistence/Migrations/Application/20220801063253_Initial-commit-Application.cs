@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace Haulio.FarmFresh.Persistence.Migrations.Application
 {
@@ -134,7 +134,7 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Application
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderDetail",
+                name: "OrderDetails",
                 columns: table => new
                 {
                     OrderId = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -146,15 +146,15 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Application
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderDetail", x => new { x.OrderId, x.ProductId });
+                    table.PrimaryKey("PK_OrderDetails", x => new { x.OrderId, x.ProductId });
                     table.ForeignKey(
-                        name: "FK_OrderDetail_Orders_OrderId",
+                        name: "FK_OrderDetails_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderDetail_Products_ProductId",
+                        name: "FK_OrderDetails_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -345,17 +345,17 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Application
             migrationBuilder.InsertData(
                 table: "ProductImages",
                 columns: new[] { "ImageUrl", "ProductID" },
-                values: new object[] { "/src/assets/res/Screen%203/Untitled-1.png", 2 });
+                values: new object[] { "/src/assets/res/Screen%203/Untitled-1.png", 1 });
 
             migrationBuilder.InsertData(
                 table: "ProductImages",
                 columns: new[] { "ImageUrl", "ProductID" },
-                values: new object[] { "/src/assets/res/Screen%203/Untitled-3.png", 2 });
+                values: new object[] { "/src/assets/res/Screen%203/Untitled-3.png", 1 });
 
             migrationBuilder.InsertData(
                 table: "ProductImages",
                 columns: new[] { "ImageUrl", "ProductID" },
-                values: new object[] { "/src/assets/res/Screen%203/Untitled-9.jpg", 2 });
+                values: new object[] { "/src/assets/res/Screen%203/Untitled-9.jpg", 1 });
 
             migrationBuilder.InsertData(
                 table: "ProductImages",
@@ -388,8 +388,8 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Application
                 values: new object[] { 3, 3 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetail_ProductId",
-                table: "OrderDetail",
+                name: "IX_OrderDetails_ProductId",
+                table: "OrderDetails",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -421,7 +421,7 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Application
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderDetail");
+                name: "OrderDetails");
 
             migrationBuilder.DropTable(
                 name: "ProductImages");

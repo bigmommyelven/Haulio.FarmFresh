@@ -1,0 +1,10 @@
+.net core
+angular
+.net core mvc
+ASP.NET ZERO
+Azure 90%
+AWS 10%
+Scrum
+DOCKER
+
+LOGOL

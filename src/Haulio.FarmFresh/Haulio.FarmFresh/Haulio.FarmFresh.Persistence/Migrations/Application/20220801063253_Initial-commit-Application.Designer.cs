@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Haulio.FarmFresh.Persistence.Migrations.Application
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220731092753_Initial-commit-Application")]
+    [Migration("20220801063253_Initial-commit-Application")]
     partial class InitialcommitApplication
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -154,7 +154,7 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Application
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetail");
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Haulio.FarmFresh.Domain.Entities.Product", b =>
@@ -270,17 +270,17 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Application
                     b.HasData(
                         new
                         {
-                            ProductID = 2,
+                            ProductID = 1,
                             ImageUrl = "/src/assets/res/Screen%203/Untitled-1.png"
                         },
                         new
                         {
-                            ProductID = 2,
+                            ProductID = 1,
                             ImageUrl = "/src/assets/res/Screen%203/Untitled-3.png"
                         },
                         new
                         {
-                            ProductID = 2,
+                            ProductID = 1,
                             ImageUrl = "/src/assets/res/Screen%203/Untitled-9.jpg"
                         },
                         new

@@ -53,7 +53,7 @@ namespace Haulio.FarmFresh.Controllers.V1
 
             return StatusCodeWithPagination(HttpStatusCode.OK, pagedResponse);
         }
-
+        [Authorize]
         [HttpPost] // TODO : BELUM DI TEST
         public async Task<IActionResult> Add(ProductDto request)
         {

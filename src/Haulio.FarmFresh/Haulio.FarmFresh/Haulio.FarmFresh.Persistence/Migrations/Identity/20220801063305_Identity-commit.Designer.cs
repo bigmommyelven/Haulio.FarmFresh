@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Haulio.FarmFresh.Persistence.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20220731092957_Identity-commit")]
+    [Migration("20220801063305_Identity-commit")]
     partial class Identitycommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,9 +91,9 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Identity
                     b.HasData(
                         new
                         {
-                            Id = "af5ff895-48b7-4ab9-8e54-91ce6a58b089",
+                            Id = "25f339d7-6907-4986-bdf4-29d6a0702745",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "afc23e86-57da-4171-b3de-d8766caf4763",
+                            ConcurrencyStamp = "efc0a140-2f81-4227-b9eb-1e7f97e0e9f9",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Superadmin",
@@ -103,15 +103,15 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Identity
                             NormalizedUserName = "SUPERADMIN",
                             PasswordHash = "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "26660ec2-5716-46c8-820b-ac1b081b16c6",
+                            SecurityStamp = "61265917-1bde-4542-a4e0-6d7b001640fc",
                             TwoFactorEnabled = false,
                             UserName = "superadmin"
                         },
                         new
                         {
-                            Id = "69f4b829-10cb-441c-9750-73b0f96d4274",
+                            Id = "42d27d56-9c01-463c-a8a8-6948b083c86a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "20f9bd2a-894d-4822-8c28-771cc0d42793",
+                            ConcurrencyStamp = "08c92ece-5bd2-46dc-af47-9b0207550f98",
                             Email = "basicuser@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Basic",
@@ -121,7 +121,7 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Identity
                             NormalizedUserName = "BASICUSER",
                             PasswordHash = "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "e3f163fd-2bc2-4075-b50b-8ad0509b19ef",
+                            SecurityStamp = "ae030481-5d4e-4b98-ad24-8737cd68e463",
                             TwoFactorEnabled = false,
                             UserName = "basicuser"
                         });
@@ -192,29 +192,29 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Identity
                     b.HasData(
                         new
                         {
-                            Id = "164d3193-d1e5-41e3-82f6-6b0ce886639a",
-                            ConcurrencyStamp = "83ce0830-c59c-4945-b290-4af462e28e53",
+                            Id = "16d0293f-1999-4544-9b0a-a20398aa602d",
+                            ConcurrencyStamp = "01c0bc30-3f61-4752-ab7b-fb9403ee264b",
                             Name = "SuperAdmin",
                             NormalizedName = "SuperAdmin"
                         },
                         new
                         {
-                            Id = "5229d061-5cff-4f3c-b7df-5b527097a17e",
-                            ConcurrencyStamp = "5239d07e-2a88-4a13-adc7-d4c1e3911ea7",
+                            Id = "e175a9f6-0157-4514-970b-def51ee645f2",
+                            ConcurrencyStamp = "8f6a960f-56d0-469c-9495-65b24995008b",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "09f746bc-64ee-43bd-829c-071bf0a6acd5",
-                            ConcurrencyStamp = "37c9760e-d1f7-4ada-a6a1-6e2bc2f55d96",
+                            Id = "398c1eb6-29fb-4f9a-92e4-1fe764df9a2e",
+                            ConcurrencyStamp = "0382a704-b9cb-4075-b9a4-1f4d1544c3e3",
                             Name = "Moderator",
                             NormalizedName = "Moderator"
                         },
                         new
                         {
-                            Id = "5c744191-1f17-4cfe-ae2e-2ff3f418c279",
-                            ConcurrencyStamp = "746e788d-eb24-4668-b6b1-2b9a451319c9",
+                            Id = "8eee6bf1-c161-44c6-a7c1-b170b97a94e1",
+                            ConcurrencyStamp = "210afeca-95fd-4e0a-b255-035efae799b0",
                             Name = "Basic",
                             NormalizedName = "Basic"
                         });
@@ -305,28 +305,28 @@ namespace Haulio.FarmFresh.Persistence.Migrations.Identity
                     b.HasData(
                         new
                         {
-                            UserId = "69f4b829-10cb-441c-9750-73b0f96d4274",
-                            RoleId = "5c744191-1f17-4cfe-ae2e-2ff3f418c279"
+                            UserId = "42d27d56-9c01-463c-a8a8-6948b083c86a",
+                            RoleId = "8eee6bf1-c161-44c6-a7c1-b170b97a94e1"
                         },
                         new
                         {
-                            UserId = "af5ff895-48b7-4ab9-8e54-91ce6a58b089",
-                            RoleId = "164d3193-d1e5-41e3-82f6-6b0ce886639a"
+                            UserId = "25f339d7-6907-4986-bdf4-29d6a0702745",
+                            RoleId = "16d0293f-1999-4544-9b0a-a20398aa602d"
                         },
                         new
                         {
-                            UserId = "af5ff895-48b7-4ab9-8e54-91ce6a58b089",
-                            RoleId = "5229d061-5cff-4f3c-b7df-5b527097a17e"
+                            UserId = "25f339d7-6907-4986-bdf4-29d6a0702745",
+                            RoleId = "e175a9f6-0157-4514-970b-def51ee645f2"
                         },
                         new
                         {
-                            UserId = "af5ff895-48b7-4ab9-8e54-91ce6a58b089",
-                            RoleId = "09f746bc-64ee-43bd-829c-071bf0a6acd5"
+                            UserId = "25f339d7-6907-4986-bdf4-29d6a0702745",
+                            RoleId = "398c1eb6-29fb-4f9a-92e4-1fe764df9a2e"
                         },
                         new
                         {
-                            UserId = "af5ff895-48b7-4ab9-8e54-91ce6a58b089",
-                            RoleId = "5c744191-1f17-4cfe-ae2e-2ff3f418c279"
+                            UserId = "25f339d7-6907-4986-bdf4-29d6a0702745",
+                            RoleId = "8eee6bf1-c161-44c6-a7c1-b170b97a94e1"
                         });
                 });
 
